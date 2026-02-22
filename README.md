@@ -1,55 +1,51 @@
-# Portfolio — Mariéthoz Cédric
+# 📁 Portfolio — Source Code Repository
 
-_Automation · System Industrial · AI · Data Engineering_
+## 🌐 Live Website
+This repository hosts the source code for my personal portfolio, published via **GitHub Pages**.
 
----
+👉 [**Live site**](https://mariethoz.github.io/portfolio/)
 
-## 👋 Introduction
-
-I started my journey in 2013 by an apprentiship **automation technician** then move in **Industrial System engineer**. From where I drift into the world of digitalisation passing by **IA** in robot control to **data eingenerring**.
-
-I enjoy building systems where **hardware, software, and data meet**, especially when they involve real-world interaction.
+The portfolio itself is designed for visitors; this README focuses on the technical side of the repository.
 
 ---
 
-## 🛠 Selected Projects
+## 🎯 About This Repository
+This repo contains everything needed to build and deploy my portfolio website, including:
 
-### 🦆 [Duckify](https://github.com/Toys-R-Us-Rex/Duckify)
+- Documentation pages stored in the docs/ directory
+- A GitHub Actions workflow for automated deployment
+- Configuration files used to generate and publish the site
+- Version history and ongoing improvements
 
-A customization platform allowing clients to design a **3D-printed duck**, painted automatically using a **UR3e robotic arm**.
-
-**Status**: 🚧 *Just getting started — early exploration phase*
-
-**Highlights (planned):**
-- Robotic path planning  
-- 3D printing workflow  
-- Physical–digital interaction
-
-
-### 🧠 [Soft Bodies Simulator](https://github.com/mariethoz/SoftbodiesSimulation_ISC)
-
-A **soft-body physics simulator** with a custom module for **Godot** visualization.
-
-**Highlights:**
-- Physics simulation  
-- Modular engine design  
-- Real-time visualization
+If you're exploring how the site is built or want to understand the structure behind the portfolio, this is the place.
 
 ---
 
-## 🙋 About Me
-🚧 *This section is still under construction.*
-<!-- [About Me](about.md) -->
+## 📂 Repository Structure
 
-## 💡 Skills
-🚧 *This section is still under construction.*
-
-➡️ [Soft skills](README.md) <!--[Soft skills](skills/skills.md)-->  
-➡️ [Technical skills](README.md) <!--[Technical skills](skills/technical.md)-->
+```
+.
+├── .github/workflows/docs.yaml
+├── docs/
+│   ├── about.md
+│   ├── index.md
+│   └── skills/
+│       ├── skills.md        # Soft and others skills
+│       └── technical.md     # Technical skills
+├── zensical.toml
+└── README.md
+```
 
 ---
 
-## 📫 Contact
+## 📦 Deployment (GitHub Pages)
+This site is deployed automatically using **GitHub Pgae/Action**.
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](www.linkedin.com/in/cedric-mariethoz-1a388928b)
-[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/mariethoz)
+If you want to reuse this setup:
+
+1. Create your **public** GitHub repository 
+2. Go to **Settings → Pages**  
+3. Bellow *Build and deployment* select **GitHub Actions**
+4. Check the [docs.yml](.github/workflows/docs.yml)
+5. Adapt the [zensical.toml](./zensical.toml) to you need
+6. Next time you `push` into your `main` or `master` branch  
