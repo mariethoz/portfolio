@@ -20,7 +20,7 @@ A customization platform allowing clients to design a **3D-printed duck**, paint
 
 **Status**: 🚧 *Just getting started — early exploration phase*
 
-**Highlights (planned):**
+**Highlights (planned):**  
 - Robotic path planning  
 - 3D printing workflow  
 - Physical–digital interaction
@@ -30,7 +30,7 @@ A customization platform allowing clients to design a **3D-printed duck**, paint
 
 A **soft-body physics simulator** with a custom module for **Godot** visualization.
 
-**Highlights:**
+**Highlights:**  
 - Physics simulation  
 - Modular engine design  
 - Real-time visualization
@@ -38,18 +38,18 @@ A **soft-body physics simulator** with a custom module for **Godot** visualizati
 ---
 
 ## 🙋 About Me
+
 🚧 *This section is still under construction.*
-<!-- [About Me](about.md) -->
 
 ## 💡 Skills
 🚧 *This section is still under construction.*
 
-➡️ [Soft skills](README.md) <!--[Soft skills](skills/skills.md)-->  
-➡️ [Technical skills](README.md) <!--[Technical skills](skills/technical.md)-->
+### 🤝 [Soft skills](skills/skills.md)  
+### 🔧 [Technical skills](skills/technical.md)
 
 ---
 
 ## 📫 Contact
 
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](www.linkedin.com/in/cedric-mariethoz-1a388928b)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](www.linkedin.com/in/cedric-mariethoz-1a388928b)  
 [![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/mariethoz)

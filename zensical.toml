@@ -13,13 +13,13 @@ Copyright &copy; 2026 Mariéthoz Cédric
 
 # Read more: https://zensical.org/docs/setup/navigation/
 nav = [
-    { "Home" = "index.md" },
-    { "About me" =  "about.md"},
-    { "Projects" = "projects.md"},
-    { "Skills" = [
+    { "🌀 Home" = "index.md" },
+    #{ "🌱 About me" =  "about.md"},
+    { "🎯 Skills" = [
         "skills/skills.md",
         "skills/technical.md",
     ]},
+    { "Three questions list" = "questions.md" }
 ]
 
 # Read more: https://zensical.org/docs/customization/#additional-css
