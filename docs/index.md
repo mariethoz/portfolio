@@ -25,16 +25,6 @@ A customization platform allowing clients to design a **3D-printed duck**, paint
 - 3D printing workflow  
 - Physical–digital interaction
 
-
-### 🧠 [Soft Bodies Simulator](https://github.com/mariethoz/SoftbodiesSimulation_ISC)
-
-A **soft-body physics simulator** with a custom module for **Godot** visualization.
-
-**Highlights:**  
-- Physics simulation  
-- Modular engine design  
-- Real-time visualization
-
 ---
 
 ## 🙋 About Me
