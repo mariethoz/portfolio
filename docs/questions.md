@@ -13,3 +13,9 @@ This part of the portfolio is linked to the work for the 304 Major Track module.
 - What does TCP mean and how it is calibred, how do you validate that it is successful?
 - Why do rotations (rx, ry, rz) pose more difficulty than positions (x, y, z) in robotic control?
 - How did the team reorganisation impact your work, and how did you adapt?
+
+## Week 3
+
+- Describe a situation where you had to give constructive feedback to a teammate. How did you approach it?
+- How do you structure your Jupyter notebooks to keep them readable and reproducible?
+- How do you test and validate code that lives inside notebooks?

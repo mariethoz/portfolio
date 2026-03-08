@@ -9,49 +9,55 @@
 
 [6]: https://github.com/Toys-R-Us-Rex/Duckify/blob/main/docs/meetings/daily/2026-02-27.typ
 
+[7]: https://github.com/Toys-R-Us-Rex/ur3e-control/blob/dev/transformation_euler-normal/docs/reports/calibration.pdf
+[8]: https://github.com/Toys-R-Us-Rex/ur3e-control/blob/dev/transformation_euler-normal/docs/reports/transformation.pdf
+[9]: https://github.com/Toys-R-Us-Rex/ur3e-control/blob/dev/transformation_euler-normal/docs/uml_drawt/robot_algo.png
+[10]: https://github.com/Toys-R-Us-Rex/ur3e-control/blob/dev/transformation_euler-normal/docs/uml_drawt/robot_func.png
 
 # 🔧 Technical Skills
-
+<!-- 
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-plain.svg" width="50"/>
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" width="50"/>
 <span style="background:white; border-radius:50%; padding:0px; display:inline-flex; align-items:center; justify-content:center; height:50px; width:50px;">
     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" width="50"/>
 </span>
+-->
 
 ## Analyse
 
-- Robots generally use **ROS-based systems** programmed in C++.
-    As this can be complex to handle directly, a Python wrapper library is provided to control the robot more easily.
-- Part of my work was to understand this library and evaluate whether it fit the project’s needs. I wrote a small **tutorial notebook** covering the basics:
-    - Tool Center Point (TCP) calibration, allowing the robot to understand its position in space
-    - The robot base coordinate systems and basic movements
-    - How the gripper works
-    - Some basic features of the embedded camera
+- Robot python library understanding
+
+    I evaluated the robot’s Python wrapper library-built to simplify interaction with its underlying ROS/C++ system-and produced a tutorial notebook that documents the essential functions needed for our workflow. The notebook covers TCP calibration, base coordinate systems, basic robot motions, gripper operation, and initial camera features, providing the team with a clear and accessible onboarding resource.
 
 [1]  [2]
+
 
 ## Modelisation
 
 - Robot Pipeline Modeling
-    Transformation steps between coordinate systems
-    - I modeled the robotics pipeline, defining the main steps required in code to reach the team’s objective.
-        - Input data required by the robot (paths, positions, orientations)
-        - Execution logic for robot movements
-        - This pipeline serves as a reference for further development and helps structure future implementation.
 
+    I modeled the robotics pipeline, defining the transformation steps, required input data, and execution logic needed for reliable robot motion. This structured framework now serves as a reference architecture for the team, guiding future implementation and ensuring consistent handling of paths, positions, and orientations.
+
+[9]  [10]
 
 ## Implementation
 
 - TCP Calibration Implementation
-    This step is critical, as accurate TCP calibration directly impacts painting precision and repeatability.
-    - I worked on the implementation of the Tool Center Point (TCP) calibration.
-    - The calibration was validated through a visual test, where the robot moves around a fixed point in space while keeping the tool aligned.
-    - This confirmed that the robot correctly understands the position of its tool relative to its base.
+
+    I implemented the Tool Center Point (TCP) calibration procedure, ensuring the robot could accurately interpret the tool’s position relative to its base. The calibration was validated through a fixed‑point visual test, confirming precise alignment and demonstrating reliable, repeatable tool‑pose understanding during motion.
+
+[2]  [2.1]  [2.2]  [7]
 
 - Coordinate System Conversion
-    This highlighted the complexity of orientation handling and the importance of consistent coordinate systems between digital models and physical execution.
-    - I worked on converting object coordinates into robot TCP coordinates.
-    - The conversion currently works correctly for position values (x, y, z).
-    - Rotation values (rx, ry, rz) are still under investigation and not fully functional yet.
 
-[2.2] [2.1]
+    I implemented a coordinate‑system conversion pipeline that translated object‑space positions and normals into robot TCP coordinates, ensuring consistent orientation handling between digital models and physical execution. This work demonstrated my ability to manage complex spatial transformations and maintain accuracy in both positional and rotational mappings.
+
+[2.1]  [2.2]  [8]
+
+## Evaluation
+
+- Drawing test on 3D surfaces
+
+    I conducted drawing tests on plate 3D surfaces using a real robot arm, developing and validating motion paths that ensured accurate tool–surface interaction. This work demonstrated my ability to integrate robotics control, spatial reasoning, and experimental validation into a functional workflow.
+
+[TODO]

@@ -7,41 +7,38 @@
 
 [6]: https://github.com/Toys-R-Us-Rex/Duckify/blob/main/docs/meetings/daily/2026-02-27.typ
 
+[7]: https://github.com/Toys-R-Us-Rex/ur3e-control/blob/dev/transformation_euler-normal/docs/reports/calibration.pdf
+[8]: https://github.com/Toys-R-Us-Rex/ur3e-control/blob/dev/transformation_euler-normal/docs/reports/transformation.pdf
+
 # 🤝 Soft Skills
 
 ## Planning & Organisation
 
-- I took part in planning and organising the workflow of the project, with a focus on the robotic component.
-This included:
-    - Identifiyng the main part of the project and potential difficulty
-    - Identifying the main technical steps required to use the robot safely and efficiently
-    - Defining what needed to be learned or tested first before moving to creative experimentation with the robot
-    - Coordinating with the robot expert to schedule onboarding, safety, and experimentation sessions
+- Project organisation and workflow
+
+    I contributed to planning and structuring the project workflow, focusing on the robotic component by identifying key challenges, defining the technical steps required for safe and efficient robot use, and prioritizing what needed to be learned or tested before creative experimentation. I also coordinated with the robot expert to organize onboarding, safety procedures, and hands‑on experimentation sessions, ensuring a smooth and well‑prepared development process.
 
 [3]  [5]
 
-- 
 
 ## Communication & Collaboration
 
-- One of my key roles was understanding the robot system well enough to explain it to others.
-    This involved:
-    - Translating technical constraints into accessible language
-    - Explaining what is possible (and what is not) with the robot
-    - Helping other teams adapt their ideas to robotic realities
+- A simplified explanation of robot specificity
 
-[4]
+    I served as a bridge between the technical and creative sides of the project by translating complex robotic constraints into accessible explanations for the broader team. This included clarifying what the robot could and could not do and helping other groups adapt their ideas to the practical realities of robotic capabilities.
+
+[4]  [7]  [8]
 
 - Team Reorganisation & Adaptability
-    - At the end of the week, the teams went through a reorganisation to better distribute tasks for the following week.
-    - I adapted my role accordingly, helping ensure continuity in the technical work despite changes in team structure.
+
+    I adapted my role to maintain continuity in the project’s technical work, ensuring that key robotic tasks progressed smoothly despite structural changes. This flexibility helped stabilise the workflow and supported an efficient transition into the next development phase.
 
 [6]
 
 ## Knowledge Sharing
 
-- I helpt prepare and present the robot workflow to the other teams. This helped reduce misunderstandings between design, generation, and fabrication. Ensuring everyone had:
-    - A shared mental model of how the robot will works
-    - Clear expectations about timing, precision, and constraints  
+- Streamlining Collaboration by Clarifying the Robot Workflow
+
+    I helped prepare and present the robot workflow to the other teams, reducing misunderstandings between design, generation, and fabrication by giving everyone a shared mental model of how the robot operates. This ensured clear expectations around timing, precision, and constraints, enabling smoother collaboration across disciplines.
 
 [1]  [4]
