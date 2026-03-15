@@ -19,3 +19,9 @@ This part of the portfolio is linked to the work for the 304 Major Track module.
 - Describe a situation where you had to give constructive feedback to a teammate. How did you approach it?
 - How do you structure your Jupyter notebooks to keep them readable and reproducible?
 - How do you test and validate code that lives inside notebooks?
+
+## Week 4
+
+- How would you prepare for a major code restructuring? Which diagrams would you choose and why?
+- Describe a situation where code cleanup significantly improved maintainability or performance. What steps did you take?
+- How do you ensure that your logging strategy provides enough detail for debugging without overwhelming the system with noise?
