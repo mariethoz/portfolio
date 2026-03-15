@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block scripts %}
+    <!-- Add scripts that need to run before here -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            document.querySelectorAll("a[href]").forEach(a => {
+                const url = a.href;
+
+                try {
+                    const parsed = new URL(url);
+
+                    // Only rewrite if:
+                    // - protocol is http or https
+                    // - hostname is NOT your own site
+                    if ((parsed.protocol === "http:" || parsed.protocol === "https:") &&
+                            parsed.hostname !== window.location.hostname) {
+                        a.href = "/static/redirect.html?to=" + encodeURIComponent(url);
+                    }
+                } catch (e) {
+                // Ignore invalid URLs
+                }
+            });
+        });
+    </script>
+    {{ super() }}
+    <!-- Add scripts that need to run afterwards here -->
+{% endblock %}

@@ -5,7 +5,7 @@ site_description = "Mariéthoz Cédric portfolio"
 
 site_author = "Mariéthoz Cédric"
 
-site_url = "https://www.mariethoz.com/"
+site_url = "https://mariethoz.github.io/portfolio/"
 
 copyright = """
 Copyright &copy; 2026 Mariéthoz Cédric
@@ -43,7 +43,7 @@ nav = [
 
 # Read more:
 # - https://zensical.org/docs/customization/#extending-the-theme
-#custom_dir = "overrides"
+custom_dir = "overrides"
 
 
 
