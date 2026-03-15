@@ -5,7 +5,7 @@ site_description = "Mariéthoz Cédric portfolio"
 
 site_author = "Mariéthoz Cédric"
 
-site_url = "https://www.mariethoz.com/"
+site_url = "https://mariethoz.github.io/portfolio/"
 
 copyright = """
 Copyright &copy; 2026 Mariéthoz Cédric
@@ -13,10 +13,9 @@ Copyright &copy; 2026 Mariéthoz Cédric
 
 # Read more: https://zensical.org/docs/setup/navigation/
 nav = [
-    { "Home" = "index.md" },
-    { "About me" =  "about.md"},
-    { "Projects" = "projects.md"},
-    { "Skills" = [
+    { "🌀 Home" = "index.md" },
+    #{ "🌱 About me" =  "about.md"},
+    { "🎯 Skills" = [
         "skills/skills.md",
         "skills/technical.md",
     ]},
@@ -43,7 +42,7 @@ nav = [
 
 # Read more:
 # - https://zensical.org/docs/customization/#extending-the-theme
-#custom_dir = "overrides"
+custom_dir = "overrides"
 
 
 
