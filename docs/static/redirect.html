@@ -29,7 +29,7 @@
         status.textContent = "Testing link: " + target;
         setTimeout(() => {
             window.location.href = target;
-        }, 2000); // 2000 ms = 2 seconds
+        }, 20); // 20 ms
 
         fetch(target, { method: "HEAD" })
             .then(res => {
