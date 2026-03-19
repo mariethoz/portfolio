@@ -38,14 +38,12 @@
 
 - Team Reorganisation & Adaptability
 
-    Following an internal team reorganisation, I adapted my role [5] to maintain continuity in the project’s technical work. This ensured that key robotic tasks progressed smoothly despite structural changes.
-    This flexibility helped stabilise the workflow and supported an efficient transition into the next development phase.
-
+    A team reorganisation disrupted the project, and I was assigned [5] to maintain continuity of the technical work. I initially struggled to manage the transition effectively, which led to delays and integration issues. These problems were resolved, ensuring a successful final delivery. The experience gave me valuable insight into handling unexpected organisational changes and improving my ability to manage shifting responsibilities.
 
 ## Knowledge Sharing
 
 - Streamlining Collaboration by Clarifying the Robot Workflow
 
     I helped prepare and present the robot workflow to the other teams [3], reducing misunderstandings between design, generation, and fabrication by giving everyone a shared mental model of how the robot operates [8].
-    This ensured clear expectations around timing, precision, and constraints, enabling smoother collaboration across disciplines.
     Special attention was given to explaining how **TCP calibration** [6] and **coordinate transformations** [7] work.
+    This ensured clear expectations around timing, precision, and constraints, enabling smoother collaboration across disciplines.

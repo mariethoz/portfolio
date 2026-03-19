@@ -25,3 +25,9 @@ This part of the portfolio is linked to the work for the 304 Major Track module.
 - How would you prepare for a major code restructuring? Which diagrams would you choose and why?
 - Describe a situation where code cleanup significantly improved maintainability or performance. What steps did you take?
 - How do you ensure that your logging strategy provides enough detail for debugging without overwhelming the system with noise?
+
+## Week 5
+
+- How do you document your code so that others can understand it?
+- In what situations would you use a database instead of versioned files?
+- If a stage in the pipeline becomes a bottleneck, how would you identify and resolve the issue?

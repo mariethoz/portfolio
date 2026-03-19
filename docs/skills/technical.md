@@ -26,6 +26,8 @@
 [14]: still to do
 -->
 
+[15]: ../proofs/datastore.md
+[16]: https://github.com/Toys-R-Us-Rex/ur3e-control/blob/main/robot_main.py
 
 
 # 🔧 Technical Skills
@@ -73,3 +75,18 @@
 - Test pipeline on real robot
 
     I built the core structure of our robot testing pipeline [12] and developed validation tests to verify TCP calibration [13] and coordinate‑transformation accuracy [14]. Running these tests on the real robot ensured the software pipeline performed reliably under real‑world conditions and helped surface issues early in development.
+
+
+## Coordinate a processing workflow
+
+- Historical Tracking, Version Control, Traceability
+
+    To improve reliability in experimental workflows, I built a data management system [15] focused on traceability, versioning, and reproducibility.
+    It enables consistent handling of calibration data while keeping the architecture simple and extensible.
+    This system was used during robot testing and enabled post-experiment analysis, as well as the generation of realistic data for simulation and error correction.
+
+- Designing a Flexible and Fault‑Tolerant Experimental Workflow
+
+    To structure the experimental workflow, I implemented a modular execution pipeline where each stage operates as an independent unit.
+    A helper function [16] orchestrates execution with configurable error-handling strategies (stop, continue, fallback), ensuring robustness without coupling to specific components.
+    This approach enabled stable execution during robot experiments, while maintaining flexibility and clear visibility over each processing step.
