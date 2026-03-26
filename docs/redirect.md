@@ -20,7 +20,7 @@
         return new URLSearchParams(window.location.search).get(name);
     }
 
-    const target = getParam("to");
+    const target = getParam("url");
     const status = document.getElementById("status");
 
     if (!target) {
