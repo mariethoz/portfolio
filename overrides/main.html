@@ -3,26 +3,32 @@
 {% block scripts %}
     <!-- Add scripts that need to run before here -->
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            document.querySelectorAll("a[href]").forEach(a => {
-                const url = a.href;
+    function rewriteLinks() {
+        document.querySelectorAll("a[href^='http']").forEach(a => {
+            const href = a.getAttribute("href");
 
-                try {
-                    const parsed = new URL(url);
+            // Skip internal links
+            if (href.startsWith(window.location.origin)) return;
 
-                    // Only rewrite if:
-                    // - protocol is http or https
-                    // - hostname is NOT your own site
-                    if ((parsed.protocol === "http:" || parsed.protocol === "https:") &&
-                            parsed.hostname !== window.location.hostname) {
-                        a.href = "/static/redirect.html?to=" + encodeURIComponent(url);
-                    }
-                } catch (e) {
-                // Ignore invalid URLs
-                }
-            });
+            // Skip if already rewritten
+            if (a.dataset.redirectApplied === "true") return;
+
+            a.dataset.redirectApplied = "true";
+
+            const url = encodeURIComponent(href);
+            a.href = `redirect?url=${url}`;
         });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        rewriteLinks();
+
+        // Watch for page updates
+        const observer = new MutationObserver(() => rewriteLinks());
+        observer.observe(document.body, { childList: true, subtree: true });
+    });
     </script>
+
     {p {text-align: justify;}}
 
     {{ super() }}
