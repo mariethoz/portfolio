@@ -14,7 +14,7 @@ Copyright &copy; 2026 Mariéthoz Cédric
 # Read more: https://zensical.org/docs/setup/navigation/
 nav = [
     { "🌀 Home" = "index.md" },
-    #{ "🌱 About me" =  "about.md"},
+    { "🌱 About me" =  "about.md"},
     { "🎯 Skills" = [
         "skills/skills.md",
         "skills/technical.md",
@@ -22,7 +22,7 @@ nav = [
 ]
 
 # Read more: https://zensical.org/docs/customization/#additional-css
-#extra_css = ["stylesheets/extra.css"]
+extra_css = ["stylesheets/extra.css"]
 
 # Read more: https://zensical.org/docs/customization/#additional-javascript
 #extra_javascript = ["javascripts/extra.js"]
