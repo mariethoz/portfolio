@@ -34,8 +34,8 @@ A customization platform allowing clients to design a **3D-printed duck**, paint
 ## 💡 Skills
 🚧 *This section is still under construction.*
 
-### 🤝 [Soft skills](skills/skills.md)  
-### 🔧 [Technical skills](skills/technical.md)
+### 🤝 [Soft skills](/skills/skills.md)  
+### 🔧 [Technical skills](/skills/technical.md)
 
 ---
 

@@ -22,6 +22,12 @@ nav = [
     { "Three questions list" = "questions.md" }
 ]
 
+
+# Add markdown extension: https://zensical.org/docs/setup/extensions/python-markdown-extensions/#snippets
+markdown_extensions = [
+    "pymdownx.snippets"
+]
+
 # Read more: https://zensical.org/docs/customization/#additional-css
 extra_css = ["stylesheets/extra.css"]
 
