@@ -1,36 +1,43 @@
-[1]: https://github.com/Toys-R-Us-Rex/ur3e-control/blob/feat/tutorial-robot-controler/tuto/tuto_robot.ipynb
-[2]: https://github.com/Toys-R-Us-Rex/ur3e-control/blob/main/docs/reports/calibration.pdf
-[3]: https://github.com/Toys-R-Us-Rex/ur3e-control/blob/main/docs/reports/transformation.pdf
+[initial planning]: https://toys-r-us-rex.github.io/Duckify/presentations/20260217_initial_planning.pdf
+[milestones]: https://toys-r-us-rex.github.io/Duckify/planning/steps_milestones.pdf
+[1]: ../duckify/week1.md
+[2]: ../duckify/week2.md
 
-[4]: https://github.com/Toys-R-Us-Rex/ur3e-control/blob/main/docs/uml_drawt/robot_algo.png
-[5]: https://github.com/Toys-R-Us-Rex/ur3e-control/blob/main/docs/uml_drawt/robot_seq.png
-[6]: https://github.com/Toys-R-Us-Rex/ur3e-control/blob/main/docs/uml_drawt/robot_func.png
-[7]: 404
-<!-- In progress 
-[7]: https://github.com/Toys-R-Us-Rex/ur3e-control/blob/main/docs/uml/robot_func.png
--->
+[latex‑typst]: ../proofs/latex_typst.md
+[datastore]: ../proofs/datastore.md
+[force]: 404
 
-[8]: https://github.com/Toys-R-Us-Rex/ur3e-control/blob/main/src/calibration.py
-[9]: https://github.com/Toys-R-Us-Rex/ur3e-control/blob/main/src/transformation.py
-[10]: https://github.com/Toys-R-Us-Rex/ur3e-control/blob/main/src/logger.py
+[git-policy]: https://toys-r-us-rex.github.io/Duckify/architecture/github_policy.pdf
+[PR 1]: https://github.com/Toys-R-Us-Rex/Duckify/pull/91
+[PR 2]: https://github.com/Toys-R-Us-Rex/Duckify/pull/123
 
-[11]: 404
-<!-- In progress 
-[11]: some video of the experiments
--->
-[12]: https://github.com/Toys-R-Us-Rex/ur3e-control/blob/main/Duckify_main_.py
-[13]: 404
-[14]: 404
-<!-- In progress 
-[13]: still to do
-[14]: still to do
--->
+[presentation]: https://toys-r-us-rex.github.io/Duckify/presentations/20260220_robotic_arm.pdf
 
-[15]: ../proofs/datastore.md
-[16]: https://github.com/Toys-R-Us-Rex/ur3e-control/blob/main/robot_main.py
+[notebook]: https://github.com/Toys-R-Us-Rex/ur3e-control/blob/archived/robot_tutorial/tuto/tuto_robot.ipynb
+
+[PV]: https://toys-r-us-rex.github.io/Duckify/meetings/daily/2026-02-27.pdf
+[PV 1]: https://toys-r-us-rex.github.io/Duckify/meetings/daily/2026-02-26.pdf
+[PV 2]: https://toys-r-us-rex.github.io/Duckify/meetings/daily/2026-03-09.pdf
+[PV 3]: https://toys-r-us-rex.github.io/Duckify/meetings/daily/2026-03-24.pdf
+[PV 4]: https://toys-r-us-rex.github.io/Duckify/meetings/daily/2026-03-25.pdf
+
+[calibration]: https://toys-r-us-rex.github.io/Duckify/architecture/robot/calibration/calibration.pdf
+[conversion]: https://toys-r-us-rex.github.io/Duckify/architecture/robot/conversion/conversion.pdf
+[comparaison]: https://toys-r-us-rex.github.io/Duckify/architecture/robot/calibration/pivot_camera.pdf
 
 
-# 🔧 Technical Skills
+[UML state machine]: https://github.com/Toys-R-Us-Rex/ur3e-control/blob/main/docs/uml_drawt/robot_algo.png
+[UML class]: https://github.com/Toys-R-Us-Rex/ur3e-control/blob/main/docs/uml_drawt/uml_pipeline.png
+
+[code robot]: https://github.com/Toys-R-Us-Rex/Duckify/blob/feat/add-arguments-main-robot/robot/robot_main.py
+[code calibration]: https://github.com/Toys-R-Us-Rex/Duckify/blob/main/robot/src/calibration.py
+[code transformation]: https://github.com/Toys-R-Us-Rex/Duckify/blob/main/robot/src/transformation.py
+[code stage]: https://github.com/Toys-R-Us-Rex/Duckify/blob/feat/add-arguments-main-robot/robot/src/stage.py
+
+[labo circle]: ../proofs/18032026_circle.pdf
+[labo multipen]: ../proofs/26032026_multipen.pdf
+[labo guide]: ../proofs/labo_protocol.pdf
+
 <!-- 
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-plain.svg" width="50"/>
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" width="50"/>
@@ -39,54 +46,96 @@
 </span>
 -->
 
+# 🔧 Technical Skills
+
+---
+
 ## Analyse
 
-- Robot python library understanding
+**Robot python library understanding**
 
-    I evaluated the robot’s Python wrapper library-built to simplify interaction with its underlying ROS/C++ system-and produced a tutorial notebook [1] that documents the essential functions needed for our workflow. The notebook covers **TCP calibration** [2], base **coordinate transfromation** [3], basic robot motions, gripper operation, and initial camera features, providing the team with a clear and accessible onboarding resource.
+I evaluated the robot’s Python wrapper library-built to simplify interaction with its underlying ROS/C++ system-and produced a tutorial [notebook] that documents the essential functions needed for our workflow. The notebook covers TCP [calibration], base coordinate [transfromation], basic robot motions, gripper operation, and initial camera features, providing the team with a clear and accessible onboarding resource.
 
+---
 
 ## Modelisation
 
-- Robot Pipeline Modeling
+**Robot pipeline modelling**
 
-    I modeled the robotics pipeline by defining the execution logic [4], processing sequence [5], and the required input/output data for accurate motion on a 3D object. This work produced an initial **UML architecture** [6] that guided the implementation and evolved throughout the project into the final system design [7].
+I designed the robotics pipeline by defining the execution logic, data flow, and required inputs/outputs for drawing on a 3D object. This helped structure the system and anticipate integration issues before implementation. The architecture is formalised in UML diagrams; [UML state machine], [UML class], demonstrating my ability to model a complex system.
+
+---
 
 ## Implementation
 
-- TCP Calibration Implementation
+**TCP calibration**
 
-    I implemented the Tool Center Point (TCP) calibration [2] [8] procedure, ensuring the robot could accurately interpret the tool’s position relative to its base. The calibration was validated through a fixed‑point visual test, confirming precise alignment and demonstrating reliable, repeatable tool‑pose understanding during motion.
+I implemented the TCP calibration code [code calibration] to ensure accurate tool positioning relative to the robot base. The calibration was validated through a fixed-point visual test [video calibration], confirming precision and repeatability. This artefact showcases my ability to design, implement, and verify robotic calibration procedures with both software and hardware rigor.
 
-- Coordinate System Conversion
+---
 
-    I implemented a coordinate‑system conversion pipeline that translated object‑space positions and normals into robot TCP coordinates [3] [9], ensuring consistent orientation handling between digital models and physical execution. This work demonstrated my ability to manage complex spatial transformations and maintain accuracy in both positional and rotational mappings.
+**Coordinate conversion pipeline**
+
+I implemented a transformation pipeline converting object-space data into robot TCP coordinates, see [conversion] report, ensuring consistency between digital models ([code transformation]) and physical execution . This required handling both position and orientation data and resolving issues related to rotation representation. This demonstrates my ability to implement complex spatial transformations.
+
+---
 
 ## Evaluation
 
-- Drawing test on 3D surfaces
+**Real robot validation**
 
-    I conducted drawing tests on plate 3D surfaces using a real robot arm [11], developing and validating motion paths that ensured accurate tool–surface interaction. This work demonstrated my ability to integrate robotics control, spatial reasoning, and experimental validation into a functional workflow.
+I conducted structured validation tests on the real robot, including motion verification and drawing tests on 3D surfaces ([labo circle], [labo multipen]). These tests confirmed that calibration and coordinate transformations behave correctly under real conditions. This demonstrates my ability to evaluate system performance through experimentation.
 
-- Record and store data during experiments
+---
 
-    I developed a custom logging system [10] that captures, stores, and reloads data from UR3e robot experiments, ensuring every test is traceable and allowing debugging or analysis to continue without rerunning the full pipeline. This streamlined setup preserves crucial experiment history and significantly speeds up iteration when issues arise.
+**Debugging and error identification**
 
-- Test pipeline on real robot
+During testing, I identified and corrected multiple issues, including incorrect transformation matrices, orientation inconsistencies, and self-collisions in motion planning. These problems were analysed and resolved through iterative testing [labo circle], [labo multipen]. This demonstrates my ability to diagnose and fix complex system errors.
 
-    I built the core structure of our robot testing pipeline [12] and developed validation tests to verify TCP calibration [13] and coordinate‑transformation accuracy [14]. Running these tests on the real robot ensured the software pipeline performed reliably under real‑world conditions and helped surface issues early in development.
+---
 
+**Test pipeline on real robot**
 
-## Coordinate a processing workflow
+I built the core structure of our robot testing pipeline ([code robot]) and developed validation tests to verify TCP calibration and coordinate‑transformation accuracy. Running these tests on the real robot ensured the software pipeline performed reliably under real‑world conditions and helped surface issues early in development
 
-- Historical Tracking, Version Control, Traceability
+---
 
-    To improve reliability in experimental workflows, I built a data management system [15] focused on traceability, versioning, and reproducibility.
-    It enables consistent handling of calibration data while keeping the architecture simple and extensible.
-    This system was used during robot testing and enabled post-experiment analysis, as well as the generation of realistic data for simulation and error correction.
+## Leverage Heterogeneous and Multimodal Data
 
-- Designing a Flexible and Fault‑Tolerant Experimental Workflow
+**Data integration**
 
-    To structure the experimental workflow, I implemented a modular execution pipeline where each stage operates as an independent unit.
-    A helper function [16] orchestrates execution with configurable error-handling strategies (stop, continue, fallback), ensuring robustness without coupling to specific components.
-    This approach enabled stable execution during robot experiments, while maintaining flexibility and clear visibility over each processing step.
+I worked with heterogeneous data sources such as 3D geometry, robot coordinates, calibration parameters, and experimental logs. I ensured consistency between these elements by implementing a coordinate‑space conversion [conversion] within the robot pipeline and a custom datastore [datastore] for structured logging. This artefact demonstrates my ability to organise and align multiple data types within a coherent workflow for robotic applications.
+
+---
+
+## Orchestrate Data Processing Workflows
+
+**Execution pipeline**
+
+I implemented a modular execution pipeline where each stage (calibration, transformation, simulation, execution) operates independently ([UML state machine]). A controller function manages execution flow and error-handling strategies ([code stage]). This enables flexible and robust processing of robot tasks.
+
+---
+
+**Traceability and reproducibility**
+
+I developed a data management system [datastore] to track experiment history, version results, and reload previous states. This allows efficient debugging and comparison of different calibration and execution strategies. It demonstrates my ability to structure reproducible experimental workflows.
+
+---
+
+## Apply Software Engineering to Data Systems
+
+**Custom logging system**
+
+I implemented a custom logging system [datastore] to record and reload experiment data during robot testing. This reduces the need to rerun the full pipeline and ensures traceability of all experiments. It demonstrates the application of software engineering practices to improve efficiency and reliability.
+
+---
+
+<!--**Force‑data acquisition module**
+
+I implemented a module that collects force measurements from the robot controller and stores them in structured CSV files. This enables efficient offline analysis [force] of interaction forces without rerunning experiments and integrates cleanly with the broader robot pipeline. The artefact demonstrates my ability to design reliable data‑acquisition components that support downstream processing and evaluation.
+
+--->
+
+**Code quality and integration**
+
+I improved code quality by adding type hints, documentation, and modular structure [code stage], and contributed to integration through pull requests [PR 2] following the Git policy [git-policy]. This ensured maintainability and smooth collaboration within the shared codebase. It demonstrates good software engineering practices in a team environment.
