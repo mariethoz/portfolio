@@ -38,6 +38,8 @@
 [labo multipen]: ../proofs/26032026_multipen.pdf
 [labo guide]: ../proofs/labo_protocol.pdf
 
+[approval]: ../proofs/approval.pdf
+
 <!-- 
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-plain.svg" width="50"/>
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" width="50"/>

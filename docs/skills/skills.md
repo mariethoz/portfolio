@@ -28,6 +28,8 @@
 
 [robot code]: https://github.com/Toys-R-Us-Rex/Duckify/blob/feat/add-arguments-main-robot/robot/robot_main.py
 
+[approval]: ../proofs/approval.pdf
+
 # 🤝 Soft Skills
 
 ## Planning & Organisation
