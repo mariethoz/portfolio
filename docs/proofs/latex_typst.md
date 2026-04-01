@@ -12,13 +12,19 @@ The goal is to demonstrate the ability to:
 - compare the writing paradigms of LaTeX, Typst, and Markdown  
 - produce a clean and coherent documentation  
 
+A practical example of this can be seen in the **Duckify** project, where the initial calibration and conversion reports were drafted in **LaTeX** before being rewritten in **Typst**.
+
+- **Typst** reports;  [calibration](https://github.com/Toys-R-Us-Rex/Duckify/blob/main/docs/architecture/robot/calibration/calibration.typ), [conversion](https://github.com/Toys-R-Us-Rex/Duckify/blob/main/docs/architecture/robot/conversion/conversion.tex)
+- **LateX** reports;  [calibration](https://github.com/Toys-R-Us-Rex/Duckify/blob/main/docs/architecture/robot/calibration/calibration.tex), [conversion](https://github.com/Toys-R-Us-Rex/Duckify/blob/main/docs/architecture/robot/conversion/conversion.tex)
+- **PDF** reports;    [calibration](https://toys-r-us-rex.github.io/Duckify/architecture/robot/calibration/calibration.pdf), [conversion](https://toys-r-us-rex.github.io/Duckify/architecture/robot/conversion/conversion.pdf)
+
 ## Introduction
 
 LaTeX has long been the reference for scientific and technical writing.  
 Typst is a modern language designed to offer LaTeX‑level power with a simpler and more consistent syntax.  
 Markdown, meanwhile, is minimalist and focused on readability.
 
-Converting LaTeX → Typst requires understanding:
+Converting LaTeX to Typst requires understanding:
 
 - LaTeX environments (math, figures, sections, lists…)  
 - their Typst equivalents  
