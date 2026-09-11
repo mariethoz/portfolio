@@ -1,0 +1,197 @@
+---
+import siteConfig from '../data/site.json';
+import { sitePath } from '../lib/site';
+
+const { showSidebarToggle = false } = Astro.props as { showSidebarToggle?: boolean };
+
+const featuredProjects = siteConfig.projects.featured.map((slug) => ({
+  slug,
+  href: sitePath(`/projects/${slug}`),
+  label: slug.replace(/-/g, ' ').replace(/\b\w/g, (char) => char.toUpperCase()),
+}));
+
+const otherProjects = siteConfig.projects.other.map((slug) => ({
+  slug,
+  href: `/projects/${slug}`,
+  label: slug.replace(/-/g, ' ').replace(/\b\w/g, (char) => char.toUpperCase()),
+}));
+---
+
+<header
+  data-site-header
+  class="sticky top-0 z-50 border-b border-slate-200 bg-white/80 backdrop-blur-sm dark:border-slate-800 dark:bg-slate-950/80"
+>
+  <div class="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
+    <a
+      href={sitePath('/')}
+      class="text-lg font-semibold tracking-tight text-slate-900 dark:text-slate-100"
+    >
+      {siteConfig.person.name}
+    </a>
+
+    <button
+      type="button"
+      class="inline-flex items-center rounded-md border border-slate-300 px-3 py-2 text-sm text-slate-700 transition hover:border-sky-500 hover:text-sky-600 lg:hidden dark:border-slate-700 dark:text-slate-200 dark:hover:border-sky-400 dark:hover:text-sky-300"
+      aria-expanded="false"
+      aria-controls="header-navigation"
+      aria-label="Toggle navigation menu"
+      data-menu-button
+    >
+      Menu
+    </button>
+
+    {
+      showSidebarToggle && (
+        <button
+          type="button"
+          class="inline-flex h-10 w-10 items-center justify-center rounded-md border border-slate-300 text-lg text-slate-700 transition hover:border-sky-500 hover:text-sky-600 lg:hidden dark:border-slate-700 dark:text-slate-200 dark:hover:border-sky-400 dark:hover:text-slate-300"
+          aria-expanded="false"
+          aria-controls="page-sidebar"
+          aria-label="Toggle page sections"
+          title="Toggle page sections"
+          data-sidebar-button
+        >
+          <span aria-hidden="true">☰</span>
+        </button>
+      )
+    }
+
+    <nav
+      id="header-navigation"
+      class="hidden items-center gap-4 text-sm font-medium text-slate-700 lg:flex dark:text-slate-200"
+      aria-label="Primary navigation"
+      data-menu-panel
+    >
+      <a href={sitePath('/')} class="transition hover:text-slate-900 dark:hover:text-white">Home</a>
+      <a href={sitePath('/about')} class="transition hover:text-slate-900 dark:hover:text-white"
+        >About Me</a
+      >
+      {
+        featuredProjects.map((project) => (
+          <a href={project.href} class="transition hover:text-slate-900 dark:hover:text-white">
+            {project.label}
+          </a>
+        ))
+      }
+      <details class="relative" data-projects-menu>
+        <summary
+          class="cursor-pointer list-none transition hover:text-slate-900 dark:hover:text-white"
+        >
+          Other Projects
+        </summary>
+        <ul
+          class="absolute right-0 top-full mt-3 min-w-48 rounded-md border border-slate-200 bg-white p-2 text-sm shadow-lg dark:border-slate-700 dark:bg-slate-900"
+        >
+          {
+            otherProjects.map((project) => (
+              <li>
+                <a
+                  href={project.href}
+                  class="block rounded px-3 py-2 transition hover:bg-slate-100 hover:text-slate-900 dark:hover:bg-slate-800 dark:hover:text-white"
+                >
+                  {project.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </details>
+    </nav>
+
+    <div class="flex items-center gap-3">
+      <slot />
+    </div>
+  </div>
+
+  <nav
+    id="mobile-navigation"
+    class="hidden border-t border-slate-200 bg-white px-4 py-3 lg:hidden dark:border-slate-800 dark:bg-slate-950"
+    aria-label="Mobile navigation"
+  >
+    <ul class="flex flex-col gap-2 text-sm font-medium text-slate-700 dark:text-slate-200">
+      <li><a href={sitePath('/')}>Home</a></li>
+      <li><a href={sitePath('/about')}>About Me</a></li>
+      {
+        featuredProjects.map((project) => (
+          <li>
+            <a href={project.href}>{project.label}</a>
+          </li>
+        ))
+      }
+      <li class="pt-2 text-xs uppercase tracking-wide text-slate-500 dark:text-slate-400">
+        Other Projects
+      </li>
+      {
+        otherProjects.map((project) => (
+          <li>
+            <a href={project.href}>{project.label}</a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</header>
+
+<script>
+  const menuButton = document.querySelector('[data-menu-button]');
+  const mobileNavigation = document.getElementById('mobile-navigation');
+  const sidebarButton = document.querySelector('[data-sidebar-button]');
+  const sidebarPanel = document.querySelector('[data-sidebar-panel]');
+  const siteHeader = document.querySelector('[data-site-header]');
+  const projectsMenu = document.querySelector('[data-projects-menu]');
+
+  const closeMobileMenus = () => {
+    if (menuButton && mobileNavigation) {
+      menuButton.setAttribute('aria-expanded', 'false');
+      mobileNavigation.classList.add('hidden');
+    }
+
+    if (sidebarButton && sidebarPanel) {
+      sidebarButton.setAttribute('aria-expanded', 'false');
+      sidebarPanel.setAttribute('aria-hidden', 'true');
+      sidebarPanel.classList.add('hidden');
+    }
+  };
+
+  if (menuButton && mobileNavigation) {
+    menuButton.addEventListener('click', () => {
+      const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
+      closeMobileMenus();
+      menuButton.setAttribute('aria-expanded', String(!isExpanded));
+      mobileNavigation.classList.toggle('hidden', isExpanded);
+    });
+  }
+
+  if (sidebarButton && sidebarPanel) {
+    sidebarButton.addEventListener('click', () => {
+      const isExpanded = sidebarButton.getAttribute('aria-expanded') === 'true';
+      closeMobileMenus();
+      sidebarButton.setAttribute('aria-expanded', String(!isExpanded));
+      sidebarPanel.classList.toggle('hidden', isExpanded);
+      sidebarPanel.setAttribute('aria-hidden', String(isExpanded));
+    });
+
+    sidebarPanel.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        closeMobileMenus();
+      });
+    });
+  }
+
+  if (siteHeader) {
+    siteHeader.addEventListener('pointerleave', (event) => {
+      const nextTarget = (event as PointerEvent).relatedTarget;
+      if (sidebarPanel && nextTarget instanceof Node && sidebarPanel.contains(nextTarget)) return;
+      closeMobileMenus();
+      if (projectsMenu) projectsMenu.removeAttribute('open');
+    });
+  }
+
+  if (sidebarPanel) {
+    sidebarPanel.addEventListener('pointerleave', (event) => {
+      const nextTarget = (event as PointerEvent).relatedTarget;
+      if (siteHeader && nextTarget instanceof Node && siteHeader.contains(nextTarget)) return;
+      closeMobileMenus();
+    });
+  }
+</script>

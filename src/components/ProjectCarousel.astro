@@ -1,0 +1,160 @@
+---
+import { sitePath } from '../lib/site';
+
+const { projects = [] } = Astro.props as {
+  projects: Array<{
+    id: string;
+    data: {
+      title: string;
+      shortDescription: string;
+      year: number;
+      technologies?: string[];
+      logo?: string;
+      image?: string;
+      github?: string;
+      demo?: string;
+    };
+  }>;
+};
+---
+
+<section aria-labelledby="other-projects" class="space-y-4">
+  <div class="flex items-center justify-between gap-4">
+    <div>
+      <p class="text-sm font-semibold uppercase tracking-[0.2em] text-sky-600 dark:text-sky-400">
+        More work
+      </p>
+      <h2 id="other-projects" class="mt-2 text-3xl font-bold text-slate-900 dark:text-white">
+        Other projects
+      </h2>
+    </div>
+    <div class="flex gap-2">
+      <button
+        type="button"
+        class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-300 bg-white text-lg text-slate-700 transition hover:border-sky-500 hover:text-sky-600 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200"
+        aria-label="Previous project"
+        data-carousel-prev
+      >
+        ←
+      </button>
+      <button
+        type="button"
+        class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-slate-300 bg-white text-lg text-slate-700 transition hover:border-sky-500 hover:text-sky-600 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200"
+        aria-label="Next project"
+        data-carousel-next
+      >
+        →
+      </button>
+    </div>
+  </div>
+
+  <div class="overflow-hidden" data-carousel-container>
+    <div class="flex gap-4 transition-transform duration-200 ease-out" data-carousel-track>
+      {
+        projects.map((project) => (
+          <div data-carousel-slide>
+            <div class="h-full">
+              <a
+                href={sitePath(`/projects/${project.id.replace(/\.md$/, '')}`)}
+                class="block h-full"
+              >
+                <div class="flex h-full flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
+                  {(project.data.logo || project.data.image) && (
+                    <div class="flex h-40 items-center justify-center border-b border-slate-200 bg-slate-50 p-5 dark:border-slate-800 dark:bg-slate-950">
+                      <img
+                        src={
+                          (project.data.logo ?? project.data.image)?.startsWith('/')
+                            ? sitePath(project.data.logo ?? project.data.image ?? '')
+                            : (project.data.logo ?? project.data.image)
+                        }
+                        alt={`${project.data.title} logo`}
+                        class="max-h-full max-w-full object-contain"
+                      />
+                    </div>
+                  )}
+                  <div class="flex flex-1 flex-col gap-3 p-4">
+                    <h3 class="text-lg font-semibold text-slate-900 dark:text-white">
+                      {project.data.title}
+                    </h3>
+                    <p class="text-sm text-slate-600 dark:text-slate-300">
+                      {project.data.shortDescription}
+                    </p>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<script>
+  const track = document.querySelector('[data-carousel-track]') as HTMLElement | null;
+  const prevButton = document.querySelector('[data-carousel-prev]');
+  const nextButton = document.querySelector('[data-carousel-next]');
+  if (track && prevButton && nextButton) {
+    let index = 0;
+    let maxIndex = 0;
+    const slides = Array.from(track.children) as HTMLElement[];
+
+    const getVisibleSlides = () => {
+      if (window.innerWidth >= 1024) return 3;
+      if (window.innerWidth >= 768) return 2;
+      return 1;
+    };
+
+    const updateCarousel = () => {
+      const slideWidth = slides[0]?.getBoundingClientRect().width ?? 0;
+      const gap = Number.parseFloat(getComputedStyle(track).columnGap) || 0;
+      maxIndex = Math.max(0, slides.length - getVisibleSlides());
+      index = Math.min(index, maxIndex);
+      track.style.transform = `translateX(-${index * (slideWidth + gap)}px)`;
+    };
+
+    const move = (direction: number) => {
+      if (maxIndex === 0) return;
+      index = (index + direction + maxIndex + 1) % (maxIndex + 1);
+      updateCarousel();
+    };
+
+    prevButton.addEventListener('click', () => {
+      move(-1);
+    });
+
+    nextButton.addEventListener('click', () => {
+      move(1);
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowLeft') {
+        move(-1);
+      }
+      if (event.key === 'ArrowRight') {
+        move(1);
+      }
+    });
+
+    window.addEventListener('resize', updateCarousel);
+    updateCarousel();
+  }
+</script>
+
+<style>
+  [data-carousel-slide] {
+    flex: 0 0 100%;
+  }
+
+  @media (min-width: 768px) {
+    [data-carousel-slide] {
+      flex-basis: calc((100% - 1rem) / 2);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    [data-carousel-slide] {
+      flex-basis: calc((100% - 2rem) / 3);
+    }
+  }
+</style>

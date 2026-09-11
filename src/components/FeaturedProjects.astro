@@ -1,0 +1,35 @@
+---
+import ProjectCard from './ProjectCard.astro';
+
+const { projects = [] } = Astro.props as {
+  projects: Array<{
+    slug: string;
+    data: {
+      title: string;
+      shortDescription: string;
+      year: number;
+      technologies?: string[];
+      image?: string;
+      github?: string;
+      demo?: string;
+    };
+  }>;
+};
+---
+
+<section aria-labelledby="featured-projects" class="space-y-6">
+  <div class="flex items-end justify-between gap-4">
+    <div>
+      <p class="text-sm font-semibold uppercase tracking-[0.2em] text-sky-600 dark:text-sky-400">
+        Featured work
+      </p>
+      <h2 id="featured-projects" class="mt-2 text-3xl font-bold text-slate-900 dark:text-white">
+        Selected projects
+      </h2>
+    </div>
+  </div>
+
+  <div class="grid gap-6 md:grid-cols-2">
+    {projects.map((project) => <ProjectCard project={project} />)}
+  </div>
+</section>

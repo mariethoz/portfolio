@@ -1,51 +1,47 @@
-# 📁 Portfolio — Source Code Repository
+# Portfolio
 
-## 🌐 Live Website
-This repository hosts the source code for my personal portfolio, published via **GitHub Pages**.
+An Astro portfolio site with content-driven project pages, responsive layouts,
+light and dark themes, and static GitHub Pages deployment.
 
-👉 [**Live site**](https://mariethoz.github.io/portfolio/)
+## Development
 
-The portfolio itself is designed for visitors; this README focuses on the technical side of the repository.
-
----
-
-## 🎯 About This Repository
-This repo contains everything needed to build and deploy my portfolio website, including:
-
-- Documentation pages stored in the docs/ directory
-- A GitHub Actions workflow for automated deployment
-- Configuration files used to generate and publish the site
-- Version history and ongoing improvements
-
-If you're exploring how the site is built or want to understand the structure behind the portfolio, this is the place.
-
----
-
-## 📂 Repository Structure
-
-```
-.
-├── .github/workflows/docs.yaml
-├── docs/
-│   ├── about.md
-│   ├── index.md
-│   └── skills/
-│       ├── skills.md        # Soft and others skills
-│       └── technical.md     # Technical skills
-├── zensical.toml
-└── README.md
+```bash
+npm install
+npm run dev
 ```
 
----
+The development server runs at `http://localhost:4321` by default.
 
-## 📦 Deployment (GitHub Pages)
-This site is deployed automatically using **GitHub Pgae/Action**.
+## Checks
 
-If you want to reuse this setup:
+```bash
+npm run check
+npm run lint
+npm run format:check
+npm run test
+npm run build
+```
 
-1. Create your **public** GitHub repository 
-2. Go to **Settings → Pages**  
-3. Bellow *Build and deployment* select **GitHub Actions**
-4. Check the [docs.yml](.github/workflows/docs.yml)
-5. Adapt the [zensical.toml](./zensical.toml) to you need
-6. Next time you `push` into your `main` or `master` branch  
+## Content
+
+Site-wide information and homepage project selection live in
+`src/data/site.json`. The project Markdown files in `src/content/projects/`
+are the source of truth for project details.
+
+To add a project:
+
+1. Create a Markdown file in `src/content/projects/` with the required frontmatter.
+2. Add any images under `public/images/`.
+3. Add its slug to `projects.featured` or `projects.other` in `src/data/site.json`.
+
+Configured project slugs are validated during the build and missing projects
+will fail the build with an explicit error.
+
+Replace the placeholder values in `src/data/site.json` and add the real CV at
+`public/documents/cv.pdf` before publishing.
+
+## Deployment
+
+Pushes to `main` run the checks and build in GitHub Actions. A successful run
+deploys the generated `dist/` directory to GitHub Pages. Enable GitHub Pages
+for the repository with **GitHub Actions** as the source.

@@ -1,0 +1,104 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ThemeToggle from '../components/ThemeToggle.astro';
+import SEO from '../components/SEO.astro';
+
+const {
+  title,
+  description,
+  hideSidebar = false,
+} = Astro.props as {
+  title: string;
+  description: string;
+  hideSidebar?: boolean;
+};
+const hasSidebar = !hideSidebar && Astro.slots.has('sidebar');
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <script is:inline>
+      const storedTheme = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.classList.toggle(
+        'dark',
+        storedTheme === 'dark' || (!storedTheme && prefersDark),
+      );
+    </script>
+    <SEO title={title} description={description} />
+  </head>
+  <body
+    class="flex min-h-screen flex-col bg-slate-50 text-slate-900 antialiased dark:bg-slate-950 dark:text-slate-100"
+  >
+    <Header showSidebarToggle={hasSidebar}>
+      <ThemeToggle />
+    </Header>
+
+    <div class="flex-1">
+      <div class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+        <div
+          class:list={[
+            'grid gap-8',
+            hideSidebar ? 'lg:grid-cols-1' : 'lg:grid-cols-[240px_minmax(0,1fr)]',
+          ]}
+        >
+          {
+            hasSidebar && (
+              <div
+                id="page-sidebar"
+                class="fixed left-0 right-0 top-[4.5rem] z-40 hidden border-t border-slate-200 bg-[var(--bg)] px-4 py-3 dark:border-slate-800 dark:bg-slate-950 lg:relative lg:top-auto lg:z-auto lg:col-span-1 lg:block lg:border-0 lg:bg-transparent lg:p-0"
+                data-sidebar-panel
+              >
+                <slot name="sidebar" />
+              </div>
+            )
+          }
+
+          <main class="min-w-0">
+            <slot />
+          </main>
+        </div>
+      </div>
+    </div>
+
+    <Footer />
+  </body>
+</html>
+
+<style is:global>
+  @import '../styles/global.css';
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  img {
+    max-width: 100%;
+    display: block;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    * {
+      animation: none !important;
+      transition: none !important;
+    }
+  }
+</style>

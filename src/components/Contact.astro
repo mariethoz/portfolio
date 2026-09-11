@@ -1,0 +1,89 @@
+---
+import siteConfig from '../data/site.json';
+import { siteIcons } from '../data/icons';
+import type { ImageMetadata } from 'astro';
+
+type ContactLink = {
+  label: string;
+  href: string;
+  icon?: [ImageMetadata, ImageMetadata];
+  symbol?: string;
+};
+
+const links = [
+  siteConfig.contact.email
+    ? { label: 'Email', href: `mailto:${siteConfig.contact.email}`, icon: siteIcons.email }
+    : null,
+  siteConfig.contact.github
+    ? { label: 'GitHub', href: siteConfig.contact.github, icon: siteIcons.github }
+    : null,
+  siteConfig.contact.linkedin
+    ? { label: 'LinkedIn', href: siteConfig.contact.linkedin, icon: siteIcons.linkedin }
+    : null,
+] as Array<ContactLink | null>;
+const availableLinks = links.filter(Boolean) as ContactLink[];
+---
+
+<section
+  id="contact"
+  class="space-y-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900"
+>
+  <div>
+    <p class="text-sm font-semibold uppercase tracking-[0.2em] text-sky-600 dark:text-sky-400">
+      Contact
+    </p>
+    <h2 class="mt-2 text-3xl font-bold text-slate-900 dark:text-white">Let’s connect</h2>
+  </div>
+
+  {
+    availableLinks.length > 0 ? (
+      <ul class="flex flex-wrap gap-3">
+        {availableLinks.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              class:list={[
+                'inline-flex items-center rounded-full px-4 py-2 text-sm font-medium transition',
+                link.label === 'GitHub'
+                  ? 'bg-slate-900 text-white hover:bg-slate-700 dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-white'
+                  : link.label === 'LinkedIn'
+                    ? 'bg-[#0a66c2] text-white hover:bg-[#004182] dark:bg-[#0a66c2] dark:text-white dark:hover:bg-[#004182]'
+                    : 'bg-[var(--accent)] text-white hover:bg-[var(--accent)-#050505] dark:bg-[var(--accent)] dark:text-black dark:hover:bg-[var(--accent)-#050505]',
+              ]}
+            >
+              {link.icon ? (
+                <>
+                  {link.label === 'LinkedIn' ? (
+                    <img src={link.icon[1].src} alt="" class="theme-linkedin-icon mr-2 h-5 w-5" />
+                  ) : (
+                    <>
+                      <img
+                        src={link.icon[1].src}
+                        alt=""
+                        class="theme-inverse-light-icon mr-2 h-5 w-5"
+                      />
+                      <img
+                        src={link.icon[0].src}
+                        alt=""
+                        class="theme-inverse-dark-icon mr-2 h-5 w-5"
+                      />
+                    </>
+                  )}
+                </>
+              ) : (
+                <span aria-hidden="true" class="mr-2 text-base leading-none">
+                  {link.symbol}
+                </span>
+              )}
+              <span>{link.label}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    ) : (
+      <p class="text-slate-600 dark:text-slate-300">
+        Contact details will be added here once available.
+      </p>
+    )
+  }
+</section>

@@ -1,0 +1,182 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import Sidebar from '../components/Sidebar.astro';
+import siteConfig from '../data/site.json';
+import { sitePath } from '../lib/site';
+import cv from '../data/cv.json';
+
+const sections = [
+  { id: 'about', label: 'About' },
+  { id: 'experience', label: 'Experience' },
+  { id: 'education', label: 'Education' },
+  { id: 'others', label: 'Others' },
+  { id: 'skills', label: 'Skills' },
+  { id: 'cv', label: 'CV' },
+];
+---
+
+<MainLayout
+  title={`About | ${siteConfig.site.title}`}
+  description={siteConfig.person.longDescription}
+>
+  <Fragment slot="sidebar">
+    <Sidebar sections={sections} />
+  </Fragment>
+
+  <article class="space-y-8">
+    <section
+      id="about"
+      class="rounded-2xl border border-slate-200 bg-white p-8 shadow-sm dark:border-slate-800 dark:bg-slate-900"
+    >
+      <p class="text-sm font-semibold uppercase tracking-[0.2em] text-sky-600 dark:text-sky-400">
+        About
+      </p>
+      <h1 class="mt-3 text-4xl font-black tracking-tight text-slate-900 dark:text-white">
+        About me
+      </h1>
+      <p class="mt-6 text-lg leading-8 text-slate-600 dark:text-slate-300">
+        {siteConfig.person.longDescription}
+      </p>
+    </section>
+
+    <section
+      id="experience"
+      class="rounded-2xl border border-slate-200 bg-white p-8 shadow-sm dark:border-slate-800 dark:bg-slate-900"
+    >
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Experience</h2>
+      <div class="mt-6 space-y-6">
+        {
+          cv.experience.map((item) => (
+            <article>
+              <p class="text-sm font-semibold text-sky-600 dark:text-sky-400">{item.period}</p>
+              <h3 class="mt-1 font-semibold text-slate-900 dark:text-white">{item.role}</h3>
+              <p class="text-sm text-slate-500 dark:text-slate-400">
+                {item.organisation} · {item.location}
+              </p>
+              {item.description && (
+                <p class="mt-2 text-slate-600 dark:text-slate-300">{item.description}</p>
+              )}
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <section
+      id="education"
+      class="rounded-2xl border border-slate-200 bg-white p-8 shadow-sm dark:border-slate-800 dark:bg-slate-900"
+    >
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Education</h2>
+      <div class="mt-6 space-y-5">
+        {
+          cv.education.map((item) => (
+            <article>
+              <p class="text-sm font-semibold text-sky-600 dark:text-sky-400">{item.period}</p>
+              <div class="mt-1 flex flex-wrap items-baseline gap-x-2 gap-y-1">
+                <h3 class="font-semibold text-slate-900 dark:text-white">{item.level}</h3>
+                <h3 class="font-semibold text-slate-900 dark:text-white">{item.name}</h3>
+              </div>
+              <p class="text-slate-600 dark:text-slate-300">
+                {item.organisation} · {item.location}
+              </p>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+    <section
+      id="others"
+      class="rounded-2xl border border-slate-200 bg-white p-8 shadow-sm dark:border-slate-800 dark:bg-slate-900"
+    >
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white">
+        Training and language studies
+      </h2>
+      <div class="mt-4 space-y-5">
+        {
+          cv.training.map((item) => (
+            <article>
+              <p class="text-sm font-semibold text-sky-600 dark:text-sky-400">{item.period}</p>
+              <h4 class="mt-1 font-semibold text-slate-900 dark:text-white">
+                {item.title ?? item.type}
+              </h4>
+              {item.title && <p class="text-slate-600 dark:text-slate-300">{item.type}</p>}
+              {item.organisation && (
+                <p class="text-slate-600 dark:text-slate-300">
+                  {item.organisation} · {item.location}
+                </p>
+              )}
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <section
+      id="skills"
+      class="rounded-2xl border border-slate-200 bg-white p-8 shadow-sm dark:border-slate-800 dark:bg-slate-900"
+    >
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Skills</h2>
+      <div class="mt-6 space-y-5">
+        {
+          Object.entries(cv.skills).map(([category, categorySkills]) => (
+            <div>
+              <h3 class="font-semibold text-slate-900 dark:text-white">{category}</h3>
+              <ul class="mt-2 flex flex-wrap gap-2 text-sm text-slate-700 dark:text-slate-200">
+                {categorySkills.map((skill) => (
+                  <li class="rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 dark:border-slate-700 dark:bg-slate-800">
+                    {skill.name}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+      <h3 class="mt-8 font-semibold text-slate-900 dark:text-white">Languages</h3>
+      <ul class="mt-4 space-y-4">
+        {
+          cv.languages.map((item) => (
+            <li class="language-proficiency">
+              <div class="flex items-center justify-between gap-4 text-sm">
+                <span class="font-medium text-slate-700 dark:text-slate-200">
+                  <span aria-hidden="true" class="mr-2 text-lg">
+                    {item.flag}
+                  </span>
+                  {item.language}
+                </span>
+                <span class="text-slate-500 dark:text-slate-400">{item.level}</span>
+              </div>
+              <div
+                class="language-proficiency__track"
+                role="progressbar"
+                aria-label={`${item.language} proficiency`}
+                aria-valuemin="0"
+                aria-valuemax="100"
+                aria-valuenow={item.proficiency}
+              >
+                <span style={`width: ${item.proficiency}%`} />
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <section
+      id="cv"
+      class="rounded-2xl border border-slate-200 bg-white p-8 shadow-sm dark:border-slate-800 dark:bg-slate-900"
+    >
+      <h2 class="text-2xl font-bold text-slate-900 dark:text-white">CV</h2>
+      <p class="mt-4 text-slate-600 dark:text-slate-300">
+        Download the latest CV available from the portfolio.
+      </p>
+      <a
+        href={sitePath('/documents/cv.pdf')}
+        download="Cedric-Mariethoz-CV.pdf"
+        class="mt-4 inline-flex items-center rounded-full bg-sky-600 px-4 py-2 text-sm font-medium text-white hover:bg-sky-700"
+      >
+        Download CV (PDF)
+      </a>
+    </section>
+  </article>
+</MainLayout>

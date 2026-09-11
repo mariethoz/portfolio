@@ -1,0 +1,38 @@
+<button
+  type="button"
+  class="inline-flex items-center justify-center rounded-full border border-slate-300 bg-white p-2 text-slate-700 transition hover:border-sky-500 hover:text-sky-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-2 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200"
+  aria-label="Toggle dark mode"
+  data-theme-toggle
+>
+  <span aria-hidden="true" data-theme-icon>☀️</span>
+</button>
+
+<script is:inline>
+  const root = document.documentElement;
+  const toggle = document.querySelector('[data-theme-toggle]');
+  const icon = document.querySelector('[data-theme-icon]');
+  const stored = localStorage.getItem('theme');
+  const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const resolvedTheme = stored || (systemPrefersDark ? 'dark' : 'light');
+
+  const applyTheme = (theme) => {
+    root.classList.toggle('dark', theme === 'dark');
+    if (icon) {
+      icon.textContent = theme === 'dark' ? '🌙' : '☀️';
+    }
+    if (toggle) {
+      toggle.setAttribute(
+        'aria-label',
+        theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode',
+      );
+    }
+  };
+
+  applyTheme(resolvedTheme);
+
+  toggle?.addEventListener('click', () => {
+    const nextTheme = root.classList.contains('dark') ? 'light' : 'dark';
+    localStorage.setItem('theme', nextTheme);
+    applyTheme(nextTheme);
+  });
+</script>

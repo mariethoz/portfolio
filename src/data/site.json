@@ -1,0 +1,22 @@
+{
+  "person": {
+    "name": "Mariéthoz Cédric",
+    "role": "Data & AI Engineer",
+    "shortDescription": "Data and AI Engineer with a strong engineering background and hands-on experience in machine learning, data processing, and automation systems.",
+    "longDescription": "I am a Data and AI Engineer with a strong engineering background and hands-on experience in machine learning, data processing, and automation systems. I enjoy building reliable, maintainable, and production-oriented solutions, especially where software, hardware, and data meet."
+  },
+  "contact": {
+    "email": "cedric.mariethoz.cm@gmail.com",
+    "github": "https://github.com/mariethoz",
+    "linkedin": "https://www.linkedin.com/in/cedric-mariethoz-1a388928b/"
+  },
+  "site": {
+    "title": "Mariéthoz Cédric — Portfolio",
+    "description": "Portfolio of Mariéthoz Cédric, a Data and AI Engineer based in Valais, Switzerland.",
+    "copyright": "2026 Mariéthoz Cédric"
+  },
+  "projects": {
+    "featured": ["duckify", "dynamaze"],
+    "other": ["mini-project", "ischess", "unistay", "softbody"]
+  }
+}

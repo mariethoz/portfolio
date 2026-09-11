@@ -1,0 +1,242 @@
+---
+import MainLayout from '../../layouts/MainLayout.astro';
+import Sidebar from '../../components/Sidebar.astro';
+import { getCollection, render } from 'astro:content';
+import { siteIcons } from '../../data/icons';
+import { sitePath } from '../../lib/site';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map((project) => ({
+    params: { slug: project.id.replace(/\.md$/, '') },
+    props: { project },
+  }));
+}
+
+type ProjectEntry = Awaited<ReturnType<typeof getCollection<'projects'>>>[number];
+const { project } = Astro.props as { project: ProjectEntry };
+const { Content } = await render(project);
+const projectTechnologies = project.data.technologies ?? [];
+const projectButtons = project.data.buttons ?? [
+  ...(project.data.demo ? [{ text: 'Live demo', link: project.data.demo }] : []),
+  ...(project.data.package ? [{ text: 'Package', link: project.data.package }] : []),
+];
+const body = project.body ?? '';
+const sections = [...body.matchAll(/^## (.+)$/gm)].map(([, label]) => ({
+  id: label
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, ''),
+  label: label.trim(),
+}));
+---
+
+<MainLayout title={`${project.data.title} | Portfolio`} description={project.data.shortDescription}>
+  <Fragment slot="sidebar">
+    <Sidebar sections={sections} />
+  </Fragment>
+
+  <article class="space-y-8">
+    <header
+      class="rounded-2xl border border-slate-200 bg-white p-8 shadow-sm dark:border-slate-800 dark:bg-slate-900"
+    >
+      <div class="flex flex-col gap-6 sm:flex-row sm:items-center">
+        {
+          project.data.logo && (
+            <div class="flex h-32 w-32 shrink-0 items-center justify-center border border-slate-200 bg-slate-50 dark:border-slate-700 dark:bg-slate-950">
+              <img
+                src={sitePath(project.data.logo)}
+                alt={`${project.data.title} logo`}
+                class="max-h-full max-w-full object-contain"
+              />
+            </div>
+          )
+        }
+        <div>
+          <p
+            class="text-sm font-semibold uppercase tracking-[0.2em] text-sky-600 dark:text-sky-400"
+          >
+            {String(project.data.month).padStart(2, '0')}/{project.data.year}
+          </p>
+          <h1 class="mt-3 text-4xl font-black tracking-tight text-slate-900 dark:text-white">
+            {project.data.title}
+          </h1>
+          <p class="mt-4 text-lg text-slate-600 dark:text-slate-300">
+            {project.data.shortDescription}
+          </p>
+        </div>
+      </div>
+    </header>
+
+    {
+      (project.data.image || project.data.github || projectButtons.length > 0) && (
+        <section
+          aria-label={`${project.data.title} project links and cover`}
+          class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900"
+        >
+          {project.data.image && (
+            <img
+              src={sitePath(project.data.image)}
+              alt={`${project.data.title} cover`}
+              class="max-h-[32rem] w-full object-contain"
+            />
+          )}
+
+          {(project.data.github || projectButtons.length > 0) && (
+            <div class="flex flex-wrap gap-3 p-6">
+              {project.data.github && (
+                <a
+                  href={project.data.github}
+                  class="inline-flex items-center rounded-full border border-slate-900 bg-slate-900 px-4 py-2 text-sm font-medium text-white dark:border-slate-100 dark:bg-slate-100 dark:text-slate-900"
+                >
+                  <img
+                    src={siteIcons.github[1].src}
+                    alt=""
+                    class="theme-inverse-light-icon mr-2 h-4 w-4"
+                  />
+                  <img
+                    src={siteIcons.github[0].src}
+                    alt=""
+                    class="theme-inverse-dark-icon mr-2 h-4 w-4"
+                  />
+                  GitHub
+                </a>
+              )}
+              {projectButtons.map((button) => (
+                <a
+                  href={button.link}
+                  class="inline-flex items-center rounded-full border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 dark:border-slate-700 dark:text-slate-200"
+                >
+                  {button.icon && (
+                    <img
+                      src={button.icon.startsWith('/') ? sitePath(button.icon) : button.icon}
+                      alt=""
+                      class="mr-2 h-4 w-4"
+                    />
+                  )}
+                  {button.text}
+                </a>
+              ))}
+            </div>
+          )}
+        </section>
+      )
+    }
+
+    {
+      projectTechnologies.length > 0 && (
+        <section class="rounded-2xl border border-slate-200 bg-white p-6 dark:border-slate-800 dark:bg-slate-900">
+          <h2 class="text-2xl font-bold text-slate-900 dark:text-white">Technologies</h2>
+          <ul class="mt-4 flex flex-wrap gap-2 text-sm text-slate-700 dark:text-slate-200">
+            {projectTechnologies.map((tech) => (
+              <li class="rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 dark:border-slate-700 dark:bg-slate-800">
+                {tech}
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    }
+
+    <section
+      aria-label={`${project.data.title} content`}
+      class="project-content prose prose-slate max-w-none dark:prose-invert"
+    >
+      <Content />
+    </section>
+  </article>
+</MainLayout>
+
+<script>
+  const projectContent = document.querySelector('.project-content');
+
+  if (projectContent) {
+    const sectionNodes = Array.from(projectContent.children);
+    let currentSection: HTMLElement | null = null;
+
+    sectionNodes.forEach((node) => {
+      if (node.tagName === 'H2') {
+        currentSection = document.createElement('section');
+        currentSection.className = 'project-section';
+        projectContent.insertBefore(currentSection, node);
+      }
+
+      currentSection?.appendChild(node);
+    });
+  }
+</script>
+
+<style>
+  .project-content {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .project-content :global(.project-section) {
+    border: 1px solid var(--border);
+    background: var(--surface);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+  }
+
+  .project-content :global(h2) {
+    margin: 0;
+    border: 0;
+    padding: 0;
+    color: var(--text);
+    font-size: 1.875rem;
+    font-weight: 800;
+    line-height: 1.2;
+  }
+
+  .project-content :global(h2:first-child) {
+    margin: 0;
+  }
+
+  .project-content :global(h3) {
+    margin: 2.5rem 0 0;
+    border-top: 2px solid var(--border);
+    padding-top: 1.25rem;
+    color: var(--accent);
+    font-size: 1.25rem;
+    font-weight: 700;
+    line-height: 1.35;
+  }
+
+  .project-content :global(h2 + h3) {
+    margin-top: 2rem;
+    border-top: 0;
+    padding-top: 0;
+  }
+
+  .project-content :global(p) {
+    margin-top: 1rem;
+    color: var(--muted);
+    line-height: 1.75;
+  }
+
+  .project-content :global(p > img) {
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    margin: 1.5rem auto;
+  }
+
+  .project-content :global(ul) {
+    margin-top: 1rem;
+    padding-left: 1.5rem;
+    color: var(--muted);
+    list-style: disc;
+  }
+
+  .project-content :global(li + li) {
+    margin-top: 0.5rem;
+  }
+
+  .project-content :global(a) {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+</style>

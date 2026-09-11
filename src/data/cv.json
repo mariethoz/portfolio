@@ -1,0 +1,128 @@
+{
+  "experience": [
+    {
+      "period": "11/2024 - 07/2026",
+      "role": "Internal member",
+      "organisation": "Junior Entreprise Valais",
+      "location": "Sion, Switzerland",
+      "description": "Developed responsive web interfaces using HTML, CSS, and JavaScript for client-facing projects."
+    },
+    {
+      "period": "02/2022 - 07/2023",
+      "role": "Student MSc researcher",
+      "organisation": "Idiap",
+      "location": "Martigny, Switzerland",
+      "description": "Studied optimisation problem solving in robotics and worked on learning algorithms in Python using PyTorch."
+    },
+    {
+      "period": "08/2013 - 07/2017",
+      "role": "Apprenticeship Automation Technician VET",
+      "organisation": "Constellium",
+      "location": "Chippis, Switzerland",
+      "description": "Worked with industrial maintenance, PLCs, control panels, and electronics."
+    }
+  ],
+  "training": [
+    {
+      "period": "12/2025",
+      "type": "Training",
+      "title": "Fundamentals of Deep Learning, NVIDIA"
+    },
+    {
+      "period": "08 - 10/2023",
+      "type": "Language Studies",
+      "organisation": "EF International",
+      "location": "Manchester, United Kingdom"
+    }
+  ],
+  "education": [
+    {
+      "period": "08/2024 - 08/2026",
+      "level": "Bachelor of Science",
+      "name": "Computer Science and Communication Systems (ISC), major in Data Engineering",
+      "organisation": "HES-SO Valais-Wallis",
+      "location": "Sion, Switzerland"
+    },
+    {
+      "period": "02/2022 - 07/2023",
+      "level": "Master of Science",
+      "name": "Artificial Intelligence",
+      "organisation": "UniDistance Suisse / Idiap",
+      "location": "Brig / Martigny, Switzerland"
+    },
+    {
+      "period": "09/2018 - 07/2021",
+      "level": "Bachelor of Science",
+      "name": "Systems Engineering, major in Infotronics",
+      "organisation": "HES-SO Valais-Wallis",
+      "location": "Sion, Switzerland"
+    },
+    {
+      "period": "08/2017 - 06/2018",
+      "level": "Swiss FVB Technical Track",
+      "name": "Technical Track",
+      "organisation": "EPTM",
+      "location": "Sion, Switzerland"
+    },
+    {
+      "period": "08/2013 - 07/2017",
+      "level": "Swiss VET",
+      "name": "Automation Technician",
+      "organisation": "EPTM / Constellium",
+      "location": "Sion / Chippis, Switzerland"
+    }
+  ],
+  "skills": {
+    "Top Skills": [
+      { "name": "Python", "level": "strong" },
+      { "name": "Machine Learning", "level": "strong" },
+      { "name": "Data Processing", "level": "strong" },
+      { "name": "Deep Learning Concepts", "level": "strong" },
+      { "name": "Systems Engineering", "level": "strong" },
+      { "name": "Industrial Automation", "level": "strong" }
+    ],
+    "AI & Machine Learning": [
+      { "name": "PyTorch", "level": "working knowledge" },
+      { "name": "Deep Learning", "level": "working knowledge" },
+      { "name": "Model Training & Evaluation", "level": "strong" },
+      { "name": "Overfitting & Regularization", "level": "strong" },
+      { "name": "Data Leakage & Temporal Validation", "level": "strong" }
+    ],
+    "Data Engineering": [
+      { "name": "Data Processing", "level": "strong" },
+      { "name": "ETL Pipelines", "level": "working knowledge" },
+      { "name": "Data Cleaning & Transformation", "level": "strong" },
+      { "name": "Batch Processing", "level": "strong" },
+      { "name": "SQL", "level": "working knowledge" },
+      { "name": "Distributed Data Processing", "level": "familiar" }
+    ],
+    "Computing & Infrastructure": [
+      { "name": "HPC", "level": "working knowledge" },
+      { "name": "SLURM", "level": "working knowledge" },
+      { "name": "C++", "level": "working knowledge" },
+      { "name": "Parallel Processing", "level": "working knowledge" }
+    ],
+    "Software Engineering": [
+      { "name": "Git", "level": "working knowledge" },
+      { "name": "Testing", "level": "working knowledge" },
+      { "name": "Modular Design", "level": "working knowledge" },
+      { "name": "Error Handling & Reliability", "level": "working knowledge" }
+    ],
+    "Web Development": [
+      { "name": "HTML/CSS", "level": "working knowledge" },
+      { "name": "JavaScript", "level": "working knowledge" },
+      { "name": "Responsive Web Development", "level": "working knowledge" }
+    ],
+    "Systems & Automation": [
+      { "name": "Industrial Automation", "level": "strong" },
+      { "name": "Sensor Systems", "level": "strong" },
+      { "name": "Control Systems", "level": "strong" },
+      { "name": "Hardware/Software Integration", "level": "strong" }
+    ]
+  },
+  "languages": [
+    { "language": "French", "flag": "🇫🇷", "level": "Native", "proficiency": 100 },
+    { "language": "English", "flag": "🇬🇧", "level": "C1", "proficiency": 80 },
+    { "language": "German", "flag": "🇩🇪", "level": "B1", "proficiency": 40 }
+  ]
+}
