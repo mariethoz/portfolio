@@ -12,7 +12,7 @@ const featuredProjects = siteConfig.projects.featured.map((slug) => ({
 
 const otherProjects = siteConfig.projects.other.map((slug) => ({
   slug,
-  href: `/projects/${slug}`,
+  href: sitePath(`/projects/${slug}`),
   label: slug.replace(/-/g, ' ').replace(/\b\w/g, (char) => char.toUpperCase()),
 }));
 ---
