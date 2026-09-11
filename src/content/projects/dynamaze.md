@@ -66,7 +66,7 @@ I connected the dashboard to telemetry agents and corrected message routing, JID
 
 During this work, I identified a flaw in the Alphabot2 battery measurement design: the voltage-divider ratio overloaded the sensor input, making it impossible to measure the current battery voltage accurately. This clarified an important reliability boundary in the hardware-facing telemetry.
 
-![Alphabot battery detail](/images/projects/dynamaze/divider.png)
+![Alphabot battery detail](/images/projects/dynamaze/divider.webp)
 
 ### Deployment and runtime infrastructure
 

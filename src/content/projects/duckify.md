@@ -11,7 +11,7 @@ technologies:
   - GitHUB
   - SCRUM
 logo: '/images/projects/duckify/logo.svg'
-image: '/images/projects/duckify/ISC.jpg'
+image: '/images/projects/duckify/ISC.webp'
 github: 'https://github.com/Toys-R-Us-Rex/Duckify'
 buttons:
   - text: 'Robot control repository'
